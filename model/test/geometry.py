@@ -51,12 +51,12 @@ class TestGeometry(unittest.TestCase):
 
     def test_index(self):
         x = 0
-        self.assertEqual(geometry.index(0, 0, 0), 0, 'index(0, 0, 0)')
+        self.assertEqual(geometry.polar_to_index(0, 0, 0), 0, 'index(0, 0, 0)')
         for r in range(1, TestGeometry.RINGS + 1):
             for s in range(0, 6):
                 for t in range(0, r):
                     x += 1
-                    self.assertEqual(geometry.index(r, s, t), x, 'index(%d, %d, %d)' % (r, s, t))
+                    self.assertEqual(geometry.polar_to_index(r, s, t), x, 'index(%d, %d, %d)' % (r, s, t))
 
     def test_ring(self):
         x = 0
@@ -78,21 +78,21 @@ class TestGeometry(unittest.TestCase):
 
     def test_tranche(self):
         x = 0
-        self.assertEqual(geometry.tranche(0), 0, 'tranche(0)')
+        self.assertEqual(geometry.tab(0), 0, 'tranche(0)')
         for r in range(1, TestGeometry.RINGS + 1):
             for s in range(0, 6):
                 for t in range(0, r):
                     x += 1
-                    self.assertEqual(geometry.tranche(x), t, 'tranche(%d)' % x)
+                    self.assertEqual(geometry.tab(x), t, 'tranche(%d)' % x)
 
     def test_polar(self):
         x = 0
-        self.assertEqual(geometry.polar(0), (0, 0, 0), 'polar(0)')
+        self.assertEqual(geometry.index_to_polar(0), (0, 0, 0), 'polar(0)')
         for r in range(1, TestGeometry.RINGS + 1):
             for s in range(0, 6):
                 for t in range(0, r):
                     x += 1
-                    self.assertEqual(geometry.polar(x), (r, s, t), 'polar(%d)' % x)
+                    self.assertEqual(geometry.index_to_polar(x), (r, s, t), 'polar(%d)' % x)
 
     def test_lateral_prev_index(self):
         x = 0
