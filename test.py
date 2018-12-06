@@ -2,18 +2,19 @@ import requests
 import json
 
 
-KEY = "AIzaSyAgEC4HM4HaUCY-lPomO7uvp5zxbNlb3ZE"
 BASE = "https://maps.googleapis.com/maps/api/place/"
 SEARCH = BASE + "nearbysearch/json?key=%s&location=%s,%s&radius=%s"
 DETAIL = BASE + "details/json?key=%s&placeid=%s"
 
-LAT = 51.915341
-LON = 4.527612
+LAT = 32.741122
+LON = -117.147487
 RAD = 50
 
 
 def get_search_ids(lat, lon, rad):
     url = SEARCH % (KEY, lat, lon, rad)
+    print(url)
+    return
     try:
         request = requests.get(url)
     except Exception as e:
@@ -71,13 +72,13 @@ def get_place(id):
 def main():
     ids = get_search_ids(LAT, LON, RAD)
 
-    for id in ids:
-        get_place(id)
+    # for id in ids:
+    #    get_place(id)
 
 
 
 
 if __name__ == "__main__":
-    #  main()
+    main()
 
     #  Starting at

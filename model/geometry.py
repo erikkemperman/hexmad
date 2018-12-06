@@ -268,3 +268,4 @@ def radial_next_polar(r: int, s: int = 0, t: int = 0):
     if t == 0:
         return [(r, 5 if s == 0 else s - 1, r - 1), (r, s, 0), (r, s, 1)]
     return [(r, s, t), (r, s, t + 1)]
+
